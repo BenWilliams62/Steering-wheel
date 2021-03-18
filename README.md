@@ -26,6 +26,7 @@ If you are running this on a computer (Windows/macOS/Linux), compile and run wit
 
 If you are running this on a raspberry pi, compile and run with the commands:
 > // compile
+> 
 > g++ main.pi.cpp Controls.cpp -o <app-name>
 > 
 > // run
