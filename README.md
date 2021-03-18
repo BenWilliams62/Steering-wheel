@@ -18,32 +18,28 @@ main.cpp will be the windows/macOS/Linux version, and main.pi.cpp will be the Ra
 Clone this repository to your device.
 
 If you are running this on a computer (Windows/macOS/Linux), compile and run with the commands:
-> // compile
+> // compile   
+> g++ main.cpp Controls.cpp -o app-name   
 > 
-> g++ main.cpp Controls.cpp -o app-name
-> 
-> // run
-> 
-> ./app-name
+> // run   
+> ./app-name   
 
 If you are running this on a raspberry pi, compile and run with the commands:
-> // compile
-> 
+> // compile    
 > g++ main.pi.cpp Controls.cpp -o app-name
 > 
-> // run
-> 
-> ./app-name
+> // run    
+> ./app-name    
 
 ## Controls
 
-Mac/Windows/Linux:
-u - upshift
-d - downshift
-n - neutral
-r - reverse
-t - timer (times 1 lap, display only the best time)
-c - timer reset
+Mac/Windows/Linux:   
+u - upshift   
+d - downshift   
+n - neutral   
+r - reverse    
+t - timer (times 1 lap, display only the best time)   
+c - timer reset   
 
 Raspberry Pi:
 
