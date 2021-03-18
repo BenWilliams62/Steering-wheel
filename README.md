@@ -19,9 +19,11 @@ Clone this repository to your device.
 
 If you are running this on a computer (Windows/macOS/Linux), compile and run with the commands:
 > // compile
+> 
 > g++ main.cpp Controls.cpp -o <app-name>
 > 
 > // run
+> 
 > ./<app-name>
 
 If you are running this on a raspberry pi, compile and run with the commands:
@@ -30,6 +32,7 @@ If you are running this on a raspberry pi, compile and run with the commands:
 > g++ main.pi.cpp Controls.cpp -o <app-name>
 > 
 > // run
+> 
 > ./<app-name>
 
 ## Controls
