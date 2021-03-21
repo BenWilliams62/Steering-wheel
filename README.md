@@ -32,7 +32,7 @@ For this project, I did this:
    > git checkout 5.12    
    > perl init-repository    
 2. Make a build directory
-   > cd ../
+   > cd ../    
    > mkdir qt5-build && cd qt5-build
 3. Configure
    > ../configure -developer-build -opensource -nomake examples -nomake tests -confirm-license
