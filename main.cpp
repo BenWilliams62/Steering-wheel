@@ -1,12 +1,22 @@
 #include <iostream>
+#include <string>
+// #include <QtCore>
 #include "Controls.hpp"
 
 // compile with command: g++ -o <projectName> main.cpp Controls.cpp
 
 int main()
 {
-    // start timer
-    std::chrono::time_point<std::chrono::high_resolution_clock> start = std::chrono::high_resolution_clock::now();
+    // start here
+    //std::cout << "Qt version: "<< qVersion() << std::endl;
+    control car;
+    car.startCar();
+    std::cout << "car started!\n";
+
+    return 0;
+};
+
+/*
 
     // define new Control object, car
     control car;
@@ -28,13 +38,4 @@ int main()
     car.shift("reverse");
     car.timer();
 
-
-    return 0;
-}
-
-/*
-* 1 tbsp coriander
-* 1 lemon
-* 1 tbsp paprika
-* 1 tbsp thyme
 */

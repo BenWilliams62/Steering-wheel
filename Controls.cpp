@@ -1,21 +1,21 @@
 #include <iostream>
 #include <string>
-#include <chrono>
 #include "Controls.hpp"
 
 // initiate engine
-void control::startCar(int g)
+void control::startCar()
 {
-    if (g <= 8)
-    {
-        if (g >= 0)
-        {
-            gear = g;
-        };
-    };
-    // set default time
-    time = 0.0;
-    bestTime = 0.0;
+    gear = 0;
+    DRS = false;
+    PLL = true;
+    BB = 50.0;
+    EB = 50.0;
+    activePreset = 1;
+    optionPreset = 1;
+    diffEntry = 1;
+    diffMid = 1;
+    diffExit = 1;
+    
 };
 
 // handle gear change
@@ -56,7 +56,7 @@ void control::shift(std::string direction)
         else
         {
             std::cout << "Go to neutral first. ";
-        }
+        };
     }
     else
     {
@@ -64,33 +64,122 @@ void control::shift(std::string direction)
     };
 
     std::cout << gear << " selected\n";
-}
+};
 
-// timer function
-
-void control::timer()
+// toggle DRS
+void control::toggleDRS()
 {
-    if (time == 0.0)
+    if (DRS == true)
     {
-        startTime = std::chrono::high_resolution_clock::now();
-        time = 0.1;
+        DRS = false;
     }
     else
     {
-        time = (std::chrono::high_resolution_clock::now() - startTime).count();
-        startTime = std::chrono::high_resolution_clock::now();
-        if (bestTime == 0.0 || time < bestTime)
+        DRS = true;
+    };
+};
+
+// toggle Pitlane limiter
+void control::togglePLL()
+{
+    if (PLL == true)
+    {
+        PLL = false;
+    }
+    else
+    {
+        PLL = true;
+    };
+};
+
+// set Brake balance - might change to set to number
+void control::setBB(std::string direction)
+{
+    if (direction == "up")
+    {
+        if (BB < 100)
         {
-            bestTime = time;
-            std::cout << bestTime << std::endl;  
+            BB += 0.1;
+        };
+    }
+    else
+    {
+        if (BB > 0)
+        {
+            BB -= 0.1;
         };
     };
 };
 
-
-// timer reset
-void control::timerReset()
+// set Engine braking - might change to set to number
+void control::setEB(std::string direction)
 {
-    time = 0.0;
-    bestTime = 0.0;
-}
+    if (direction == "up")
+    {
+        if (EB < 100)
+        {
+            EB += 0.1;
+        };
+    }
+    else
+    {
+        if (EB > 0)
+        {
+            EB -= 0.1;
+        };
+    };
+};
+
+// scroll throug presets
+void control::scrollPreset(int jump)
+{
+    optionPreset = (optionPreset + jump) % 20;   // assume 20 presets
+};
+
+// set preset
+void control::setPreset()
+{
+    activePreset = optionPreset;
+};
+
+// set Diff - entry. mihgt change to set to number
+void control::setDiffEntry(std::string direction)
+{
+    if (direction == "up")
+    {
+        diffEntry = (diffEntry + 1) % 10;  // asume 10 options
+
+    }
+    else
+    {
+        diffEntry = (diffEntry + 9) % 10;
+    };
+};
+
+// set Diff - entry. mihgt change to set to number
+void control::setDiffMid(std::string direction)
+{
+    if (direction == "up")
+    {
+        diffMid = (diffMid + 1) % 10;
+
+    }
+    else
+    {
+        diffMid = (diffMid + 9) % 10;
+    };
+};
+
+// set Diff - entry. mihgt change to set to number
+void control::setDiffExit(std::string direction)
+{
+    if (direction == "up")
+    {
+        diffExit = (diffExit + 1) % 10;
+
+    }
+    else
+    {
+        diffExit = (diffExit + 9) % 10;
+    };
+};
