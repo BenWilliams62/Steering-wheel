@@ -35,7 +35,7 @@ For this project, I did this:
    > cd ../    
    > mkdir qt5-build && cd qt5-build
 3. Configure
-   > ../configure -developer-build -opensource -nomake examples -nomake tests -confirm-license
+   > ../qt5/configure -developer-build -opensource -nomake examples -nomake tests
 4. Build
    > make -j$(nproc)
 
