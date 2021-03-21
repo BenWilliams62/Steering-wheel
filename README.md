@@ -23,7 +23,7 @@ main.cpp will be the windows/macOS/Linux version, and main.pi.cpp will be the Ra
 
 ## How to use Qt5
 
-Please follow the instructions from [here] (https://wiki.qt.io/Building_Qt_5_from_Git#Getting_the_source_code), as they will provide much more details, including licensing and tutorials.
+Please follow the instructions from [here](https://wiki.qt.io/Building_Qt_5_from_Git#Getting_the_source_code), as it will provide much more details, including [licensing](https://www.qt.io/download-open-source?hsCtaTracking=9f6a2170-a938-42df-a8e2-a9f0b1d6cdce%7C6cb0de4f-9bb5-4778-ab02-bfb62735f3e5) and tutorials.
 
 For this project, I did this:
 1. Downloaded the source code    
