@@ -45,18 +45,12 @@ For this project, I did this:
 Clone this repository to your device.
 
 If you are running this on a computer (Windows/macOS/Linux), compile and run with the commands:
-   > // compile   
-   > g++ main.cpp Controls.cpp -o app-name   
-   > 
-   > // run   
-   > ./app-name   
+   > <path>/qt5-build/qtbase/bin/qmake -project   
+   > <path>/qt5-build/qtbase/bin/qmake
 
-If you are running this on a raspberry pi, compile and run with the commands:
-   > // compile    
-   > g++ main.pi.cpp Controls.cpp -o app-name
-   > 
-   > // run    
-   > ./app-name    
+After making any changes, compile with:
+   > make
+  
 
 
 
