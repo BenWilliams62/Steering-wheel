@@ -1,2 +1,17 @@
 SteeringWheel
 .vscode/settings.json
+C++ steering wheel.app/Contents/Resources/empty.lproj
+main.o
+Makefile
+moc_Controls.cpp
+moc_Controls.o
+moc_predefs.h
+uic_wrapper.sh
+C++ steering wheel.app/Contents/Info.plist
+C++ steering wheel.app/Contents/PkgInfo
+C++ steering wheel.app/Contents/MacOS/C++ steering wheel
+GUI.o
+Controls.o
+C++ steering wheel.pro
+.qmake.stash
+.DS_Store
