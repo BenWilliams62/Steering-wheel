@@ -10,11 +10,11 @@ A GUI will be built that will show all settings and allow you to navigate throug
 main.cpp will be the windows/macOS/Linux version, and main.pi.cpp will be the Raspberry Pi version. The differences will be that the Pi version will listen for GPIO commands, and the main version will listen for keyboard keys.
 
 ## Aims
-- GUI
 - Assign and listen to key presses to trigger functions
 
 ## Progress
-- initial functions added: gears, DRS, PLL, diff, presets, brake balance, engine braking
+- initial functions added: gears, DRS, PLL, brake balance, engine braking
+- Initial GUI
 
 ## Technologies
 - C++
