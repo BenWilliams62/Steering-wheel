@@ -1,24 +1,3 @@
-/*
-#include <iostream>
-#include <string>
-#include <QtCore>
-#include "Controls.hpp"
-
-// compile with command: g++ -o <projectName> main.cpp Controls.cpp
-
-int main()
-{
-    // start here
-    control car;
-    car.startCar();
-    std::cout << "car started!\n";
-    std::cout << "Qt version: " << qVersion() << std::endl;
-
-    return 0;
-};
-
-*/
-
 #include <QApplication>
 #include <QWidget>
 #include <QPushButton>

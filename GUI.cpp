@@ -3,6 +3,7 @@
 #include <string>
 #include <QFont>
 
+// GUI
 PlusMinus::PlusMinus(QWidget *parent)
     : QWidget(parent) {
 
@@ -17,6 +18,8 @@ PlusMinus::PlusMinus(QWidget *parent)
   auto *BBplsBtn = new QPushButton("BB +", this);
   auto *BBminBtn = new QPushButton("BB -", this);
   auto *ignitionBtn = new QPushButton("Ignition", this);
+  auto *DiffUpBtn = new QPushButton("Diff +", this);
+  auto *DiffDnBtn = new QPushButton("Diff -", this);
   // rotary switch
 
   gearlbl = new QLabel("", this);
@@ -25,6 +28,7 @@ PlusMinus::PlusMinus(QWidget *parent)
   EBlbl = new QLabel("", this);
   BBlbl = new QLabel("", this);
   Errorlbl = new QLabel("Start engine", this);
+  Difflbl = new QLabel("", this);
 
   // stylise
   // ignition
@@ -60,7 +64,10 @@ PlusMinus::PlusMinus(QWidget *parent)
   // Error label
   Errorlbl->setGeometry(450, 400,200,50);
 
-  // rotary switch
+  // Diff
+  DiffUpBtn->setGeometry(500,480,100,100);
+  DiffDnBtn->setGeometry(400,480,100,100);
+  Difflbl->setGeometry(450,380,50,100);
 
   connect(ignitionBtn, &QPushButton::clicked, this, &PlusMinus::startCar);
   connect(gearplsBtn, &QPushButton::clicked, this, &PlusMinus::shiftUp);
@@ -72,9 +79,12 @@ PlusMinus::PlusMinus(QWidget *parent)
   connect(EBminBtn, &QPushButton::clicked, this, &PlusMinus::EBDown);
   connect(BBplsBtn, &QPushButton::clicked, this, &PlusMinus::BBUp);
   connect(BBminBtn, &QPushButton::clicked, this, &PlusMinus::BBDown);
+  connect(DiffUpBtn, &QPushButton::clicked, this, &PlusMinus::setDiffUp);
+  connect(DiffDnBtn, &QPushButton::clicked, this, &PlusMinus::setDiffDn);
   // rotary switch
 };
 
+// Start the car button press
 void PlusMinus::startCar()
 {
     if (engine == false)
@@ -105,11 +115,12 @@ void PlusMinus::startCar()
     EBlbl->setText(QString::number(EB));
     // activePreset = 1;
     // optionPreset = 1;
-    // diffEntry = 1;
-    // diffMid = 1;
-    // diffExit = 1;
+
+    diffEntry = 1;
+    Difflbl->setText(QString::number(diffEntry));
 };
 
+// Shift up button press
 void PlusMinus::shiftUp()
 {
     if (engine != true)
@@ -127,6 +138,7 @@ void PlusMinus::shiftUp()
     };
 };
 
+// Shift Down button press
 void PlusMinus::shiftDown()
 {
     if (engine != true)
@@ -145,6 +157,7 @@ void PlusMinus::shiftDown()
     };
 };
 
+// Shift to neutral button press
 void PlusMinus::shiftNeutral()
 {
     if (engine != true)
@@ -155,6 +168,7 @@ void PlusMinus::shiftNeutral()
     gearlbl->setText("N");
 };
 
+// Turn DRS on or off
 void PlusMinus::toggleDRS()
 {
     if (engine != true)
@@ -173,6 +187,7 @@ void PlusMinus::toggleDRS()
     };
 };
 
+// Turn pit lane limiter on or off
 void PlusMinus::togglePLL()
 {
     if (engine != true)
@@ -191,6 +206,7 @@ void PlusMinus::togglePLL()
     };
 };
 
+// turn engine braking up
 void PlusMinus::EBUp()
 {
     if (engine != true)
@@ -204,6 +220,7 @@ void PlusMinus::EBUp()
     };
 };
 
+// turn engine braking down
 void PlusMinus::EBDown()
 {
     if (engine != true)
@@ -217,6 +234,7 @@ void PlusMinus::EBDown()
     };
 };
 
+// move brake balance forward
 void PlusMinus::BBUp()
 {
     if (engine != true)
@@ -230,6 +248,7 @@ void PlusMinus::BBUp()
     };
 };
 
+// move brake balance backwards
 void PlusMinus::BBDown()
 {
     if (engine != true)
@@ -241,6 +260,34 @@ void PlusMinus::BBDown()
         BB -= 0.1;
         BBlbl->setText(QString::number(BB));
     };
+};
+
+// stiffen Diff
+void PlusMinus::setDiffUp()
+{
+    if (diffEntry < 10)
+    {
+        diffEntry++;
+    }
+    else
+    {
+        diffEntry = 1;
+    };
+    Difflbl->setText(QString::number(diffEntry));
+};
+
+// Loosen Diff
+void PlusMinus::setDiffDn()
+{
+    if (diffEntry == 1)
+    {
+        diffEntry = 10;
+    }
+    else
+    {
+        diffEntry--;
+    };
+    Difflbl->setText(QString::number(diffEntry));
 };
 
 /*

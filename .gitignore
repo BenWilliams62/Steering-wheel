@@ -15,3 +15,5 @@ Controls.o
 C++ steering wheel.pro
 .qmake.stash
 .DS_Store
+.vscode/launch.json
+.vscode/tasks.json

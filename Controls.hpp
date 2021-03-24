@@ -66,6 +66,8 @@ class PlusMinus : public QWidget {
     void EBDown();                      // turn down engine braking
     void BBUp();                        // Shift brake balance forward
     void BBDown();                      // Shift brake balance backwards
+    void setDiffUp();                   // Set the diff settings.
+    void setDiffDn();                   // Set the diff settings.
     /*
     void scrollPreset(int jump);        // flick through presets
     void setPreset();                   // set preset
@@ -81,4 +83,5 @@ class PlusMinus : public QWidget {
     QLabel *EBlbl;
     QLabel *BBlbl;
     QLabel *Errorlbl;
+    QLabel *Difflbl;
 };
