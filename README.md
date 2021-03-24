@@ -7,7 +7,7 @@ The aim of this project is to develop a full functioned f1-style steering wheel,
 
 The file "Pi wheel" will contain the necessary code to turn a series of buttons and a raspberry pi into a controller to control the program. This will need to be compiled separately.
 
-Main.cpp, Controls.cpp and GUI.CPP focus on the GUI and functions needed to make this project work.
+Main.cpp, Controls.cpp and GUI.cpp focus on the GUI and functions needed to make this project work.
 
 ## Aims
 - Create a presets menu
