@@ -76,6 +76,9 @@ class PlusMinus : public QWidget {
     void setDiffExit(std::string direction);  // sett diff Exit setting
     */
 
+  protected:
+    void keyPressEvent(QKeyEvent *event);// handle controls through key
+
   private:
     QLabel *gearlbl;
     QLabel *DRSlbl;

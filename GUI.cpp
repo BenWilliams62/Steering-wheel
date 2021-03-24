@@ -2,6 +2,7 @@
 //#include <QGridLayout>
 #include <string>
 #include <QFont>
+#include <QKeyEvent>
 
 // GUI
 PlusMinus::PlusMinus(QWidget *parent)
@@ -65,9 +66,9 @@ PlusMinus::PlusMinus(QWidget *parent)
   Errorlbl->setGeometry(450, 400,200,50);
 
   // Diff
-  DiffUpBtn->setGeometry(500,480,100,100);
-  DiffDnBtn->setGeometry(400,480,100,100);
-  Difflbl->setGeometry(450,380,50,100);
+  DiffUpBtn->setGeometry(300,480,100,100);
+  DiffDnBtn->setGeometry(200,480,100,100);
+  Difflbl->setGeometry(250,380,50,100);
 
   connect(ignitionBtn, &QPushButton::clicked, this, &PlusMinus::startCar);
   connect(gearplsBtn, &QPushButton::clicked, this, &PlusMinus::shiftUp);
@@ -268,10 +269,6 @@ void PlusMinus::setDiffUp()
     if (diffEntry < 10)
     {
         diffEntry++;
-    }
-    else
-    {
-        diffEntry = 1;
     };
     Difflbl->setText(QString::number(diffEntry));
 };
@@ -279,11 +276,7 @@ void PlusMinus::setDiffUp()
 // Loosen Diff
 void PlusMinus::setDiffDn()
 {
-    if (diffEntry == 1)
-    {
-        diffEntry = 10;
-    }
-    else
+    if (diffEntry != 1)
     {
         diffEntry--;
     };
@@ -296,3 +289,72 @@ void PlusMinus::Presets()
 
 };
 */
+
+// Key press handling56
+void PlusMinus::keyPressEvent(QKeyEvent *event)
+{
+    // Ignition
+    if (event->key() == Qt::Key_I)
+    {
+        PlusMinus::startCar();
+    }
+    // gear shift up
+    else if(event->key() == Qt::Key_P)
+    {
+        PlusMinus::shiftUp();
+    }
+    // gear shift down
+    else if (event->key() == Qt::Key_Q)
+    {
+        PlusMinus::shiftDown();
+    }
+    // gear shift to  neutral
+    else if (event->key() == Qt::Key_N)
+    {
+        PlusMinus::shiftNeutral();
+    }
+    // toggle DRS
+    else if (event->key() == Qt::Key_W)
+    {
+        PlusMinus::toggleDRS();
+    }
+    // toggle PLL
+    else if (event->key() == Qt::Key_O)
+    {
+        PlusMinus::togglePLL();
+    }
+    // Engine braking up
+    else if (event->key() == Qt::Key_D)
+    {
+        PlusMinus::EBUp();
+    }
+    // Engine braking down
+    else if (event->key() == Qt::Key_C)
+    {
+        PlusMinus::EBDown();
+    }
+    // brake balance - Forward
+    else if (event->key() == Qt::Key_K)
+    {
+        PlusMinus::BBUp();
+    }
+    // brake balance - Backwards
+    else if (event->key() == Qt::Key_M)
+    {
+        PlusMinus::BBDown();
+    }
+    // set Diff - stiffer
+    else if (event->key() == Qt::Key_F)
+    {
+        PlusMinus::setDiffUp();
+    }
+    // set Diff - looser
+    else if (event->key() == Qt::Key_V)
+    {
+        PlusMinus::setDiffDn();
+    }
+    else
+    {
+        PlusMinus::startCar();
+    }
+}
