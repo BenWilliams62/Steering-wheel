@@ -3,16 +3,14 @@
 ## Description
 This steering wheel project is being built.
 
-The aim of this project is to develop a full functioned f1-style steering wheel, to be put on a raspberry pi. This will not be connected to an f1 car (or any other car) for budget reasons, however if you are building a project and need this program, there will be spaces left to input the necessary code. 
-
-The file "Pi wheel" will contain the necessary code to turn a series of buttons and a raspberry pi into a controller to control the program. This will need to be compiled separately.
+The aim of this project is to develop a full functioned f1-style steering wheel, including the GUI, and button to trigger functions. This will not be connected to an f1 car (or any other car) for budget reasons, however if you are building a project and need this program, there will be spaces left to input the necessary code. 
 
 Main.cpp, Controls.cpp and GUI.cpp focus on the GUI and functions needed to make this project work.
 
-## Aims
+## Currently Building
 - Create a presets menu
 
-## Progress
+## Functions Built
 - initial functions added: gears, DRS, PLL, brake balance, engine braking
 - Initial GUI
 - Assign and listen to key presses to trigger functions
