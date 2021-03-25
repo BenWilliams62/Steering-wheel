@@ -30,6 +30,8 @@ PlusMinus::PlusMinus(QWidget *parent)
   BBlbl = new QLabel("", this);
   Errorlbl = new QLabel("Start engine", this);
   Difflbl = new QLabel("", this);
+  Presetlbl = new QLabel("",this);
+  Selectlbl = new QLabel("",this);
 
   // stylise
   // ignition
@@ -69,6 +71,10 @@ PlusMinus::PlusMinus(QWidget *parent)
   DiffUpBtn->setGeometry(300,480,100,100);
   DiffDnBtn->setGeometry(200,480,100,100);
   Difflbl->setGeometry(250,380,50,100);
+
+  // Preset
+  Presetlbl->setGeometry(450,380,50,100);
+  Selectlbl->setGeometry(500,380,50,100);
 
   connect(ignitionBtn, &QPushButton::clicked, this, &PlusMinus::startCar);
   connect(gearplsBtn, &QPushButton::clicked, this, &PlusMinus::shiftUp);
@@ -114,11 +120,16 @@ void PlusMinus::startCar()
     
     EB = 50.0;
     EBlbl->setText(QString::number(EB));
-    // activePreset = 1;
-    // optionPreset = 1;
 
     diffEntry = 1;
     Difflbl->setText(QString::number(diffEntry));
+
+    activePreset = 1;
+    Presetlbl->setText(QString::number(activePreset));
+
+    optionPreset = 1;
+    Selectlbl->setText(QString::number(optionPreset));
+
 };
 
 // Shift up button press
@@ -283,14 +294,34 @@ void PlusMinus::setDiffDn()
     Difflbl->setText(QString::number(diffEntry));
 };
 
-/*
-void PlusMinus::Presets()
+// preset menu scroll up
+void PlusMinus::scrollUp()
 {
-
+    if (optionPreset < 10)
+    {
+        optionPreset++;
+        Selectlbl->setText(QString::number(optionPreset));
+    };
 };
-*/
 
-// Key press handling56
+// preset menu scroll down
+void PlusMinus::scrollDown()
+{
+    if (optionPreset > 1)
+    {
+        optionPreset--;
+        Selectlbl->setText(QString::number(optionPreset));
+    };
+};
+
+// preset menu - select
+void PlusMinus::selectMenu()
+{
+    activePreset = optionPreset;
+    Presetlbl->setText(QString::number(activePreset));
+};
+
+// Key press handling
 void PlusMinus::keyPressEvent(QKeyEvent *event)
 {
     // Ignition
@@ -353,8 +384,23 @@ void PlusMinus::keyPressEvent(QKeyEvent *event)
     {
         PlusMinus::setDiffDn();
     }
+    // scroll up menu
+    else if (event->key() == Qt::Key_Up)
+    {
+        PlusMinus::scrollUp();
+    }
+    // scroll down menu
+    else if (event->key() == Qt::Key_Down)
+    {
+        PlusMinus::scrollDown();
+    }
+    // select menu item
+    else if (event->key() == Qt::Key_B)
+    {
+        PlusMinus::selectMenu();
+    }
     else
     {
         PlusMinus::startCar();
-    }
-}
+    };
+};

@@ -47,9 +47,9 @@ class PlusMinus : public QWidget {
     bool PLL;               // True when pit limiter is on
     double BB;              // Brake balance (0 - 100)
     double EB;              // Engine braking (0 - 100)
-    int activePreset;       // current preset
-    int optionPreset;       // flicking through presets
     int diffEntry;          // corner entry diff setting
+    int activePreset;       // current selected preset
+    int optionPreset;       // preset currently hovered on
 
 
   public:
@@ -68,6 +68,9 @@ class PlusMinus : public QWidget {
     void BBDown();                      // Shift brake balance backwards
     void setDiffUp();                   // Set the diff settings.
     void setDiffDn();                   // Set the diff settings.
+    void scrollUp();                    // scroll up in the menu
+    void scrollDown();                  // scroll down in the menu
+    void selectMenu();                  // select menu option
     /*
     void scrollPreset(int jump);        // flick through presets
     void setPreset();                   // set preset
@@ -87,4 +90,6 @@ class PlusMinus : public QWidget {
     QLabel *BBlbl;
     QLabel *Errorlbl;
     QLabel *Difflbl;
+    QLabel *Presetlbl;
+    QLabel *Selectlbl;
 };
