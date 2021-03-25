@@ -5,7 +5,7 @@
 #include <QKeyEvent>
 
 // GUI
-PlusMinus::PlusMinus(QWidget *parent)
+WheelGUI::WheelGUI(QWidget *parent)
     : QWidget(parent) {
 
   // create all the buttons and labels
@@ -76,34 +76,36 @@ PlusMinus::PlusMinus(QWidget *parent)
   Presetlbl->setGeometry(450,380,50,100);
   Selectlbl->setGeometry(500,380,50,100);
 
-  connect(ignitionBtn, &QPushButton::clicked, this, &PlusMinus::startCar);
-  connect(gearplsBtn, &QPushButton::clicked, this, &PlusMinus::shiftUp);
-  connect(gearminBtn, &QPushButton::clicked, this, &PlusMinus::shiftDown);
-  connect(gearntrBtn, &QPushButton::clicked, this, &PlusMinus::shiftNeutral);
-  connect(DRSBtn, &QPushButton::clicked, this, &PlusMinus::toggleDRS);
-  connect(PLLBtn, &QPushButton::clicked, this, &PlusMinus::togglePLL);
-  connect(EBplsBtn, &QPushButton::clicked, this, &PlusMinus::EBUp);
-  connect(EBminBtn, &QPushButton::clicked, this, &PlusMinus::EBDown);
-  connect(BBplsBtn, &QPushButton::clicked, this, &PlusMinus::BBUp);
-  connect(BBminBtn, &QPushButton::clicked, this, &PlusMinus::BBDown);
-  connect(DiffUpBtn, &QPushButton::clicked, this, &PlusMinus::setDiffUp);
-  connect(DiffDnBtn, &QPushButton::clicked, this, &PlusMinus::setDiffDn);
+  connect(ignitionBtn, &QPushButton::clicked, this, &WheelGUI::startCar);
+  connect(gearplsBtn, &QPushButton::clicked, this, &WheelGUI::shiftUp);
+  connect(gearminBtn, &QPushButton::clicked, this, &WheelGUI::shiftDown);
+  connect(gearntrBtn, &QPushButton::clicked, this, &WheelGUI::shiftNeutral);
+  connect(DRSBtn, &QPushButton::clicked, this, &WheelGUI::toggleDRS);
+  connect(PLLBtn, &QPushButton::clicked, this, &WheelGUI::togglePLL);
+  connect(EBplsBtn, &QPushButton::clicked, this, &WheelGUI::EBUp);
+  connect(EBminBtn, &QPushButton::clicked, this, &WheelGUI::EBDown);
+  connect(BBplsBtn, &QPushButton::clicked, this, &WheelGUI::BBUp);
+  connect(BBminBtn, &QPushButton::clicked, this, &WheelGUI::BBDown);
+  connect(DiffUpBtn, &QPushButton::clicked, this, &WheelGUI::setDiffUp);
+  connect(DiffDnBtn, &QPushButton::clicked, this, &WheelGUI::setDiffDn);
   // rotary switch
 };
 
 // Start the car button press
-void PlusMinus::startCar()
+void WheelGUI::startCar()
 {
     if (engine == false)
     {
         engine = true;
         Errorlbl->setText("");
+        // turn car on
     }
     else
     {
         engine = false;
         gearlbl->setText("I");
         Errorlbl->setText("Start Engine");
+        // turn car off
     };
 
     gear = 0;
@@ -133,7 +135,7 @@ void PlusMinus::startCar()
 };
 
 // Shift up button press
-void PlusMinus::shiftUp()
+void WheelGUI::shiftUp()
 {
     if (engine != true)
     {
@@ -141,17 +143,18 @@ void PlusMinus::shiftUp()
     };
     if (gear < 8)
     {
+        // change gear up
         gear++;
     };
     gearlbl->setText(QString::number(gear));
     if (gear == 0)
     {
-        gearlbl->setText("N");
+        WheelGUI::shiftNeutral();
     };
 };
 
 // Shift Down button press
-void PlusMinus::shiftDown()
+void WheelGUI::shiftDown()
 {
     if (engine != true)
     {
@@ -159,29 +162,32 @@ void PlusMinus::shiftDown()
     };
     if (gear > 1)
     {
+        // change gear down
         gear--;
         gearlbl->setText(QString::number(gear));
     }
     else if (gear == 0)
     {
+        // change gear to reverse
         gear = -1;
         gearlbl->setText("R");
     };
 };
 
 // Shift to neutral button press
-void PlusMinus::shiftNeutral()
+void WheelGUI::shiftNeutral()
 {
     if (engine != true)
     {
         return;
     };
+    // change gear to neutral
     gear = 0;
     gearlbl->setText("N");
 };
 
 // Turn DRS on or off
-void PlusMinus::toggleDRS()
+void WheelGUI::toggleDRS()
 {
     if (engine != true)
     {
@@ -189,18 +195,20 @@ void PlusMinus::toggleDRS()
     };
     if (DRS == true)
     {
+        // Close DRS
         DRS = false;
         DRSlbl->setText("");
     }
     else
     {
+        // Open DRS
         DRS = true;
         DRSlbl->setText("DRS");
     };
 };
 
 // Turn pit lane limiter on or off
-void PlusMinus::togglePLL()
+void WheelGUI::togglePLL()
 {
     if (engine != true)
     {
@@ -208,18 +216,20 @@ void PlusMinus::togglePLL()
     };
     if (PLL == true)
     {
+        // Turn on PLL
         PLL = false;
         PLLlbl->setText("");
     }
     else
     {
+        // Turn off PLL
         PLL = true;
         PLLlbl->setText("PLL");
     };
 };
 
 // turn engine braking up
-void PlusMinus::EBUp()
+void WheelGUI::EBUp()
 {
     if (engine != true)
     {
@@ -233,7 +243,7 @@ void PlusMinus::EBUp()
 };
 
 // turn engine braking down
-void PlusMinus::EBDown()
+void WheelGUI::EBDown()
 {
     if (engine != true)
     {
@@ -247,7 +257,7 @@ void PlusMinus::EBDown()
 };
 
 // move brake balance forward
-void PlusMinus::BBUp()
+void WheelGUI::BBUp()
 {
     if (engine != true)
     {
@@ -261,7 +271,7 @@ void PlusMinus::BBUp()
 };
 
 // move brake balance backwards
-void PlusMinus::BBDown()
+void WheelGUI::BBDown()
 {
     if (engine != true)
     {
@@ -275,7 +285,7 @@ void PlusMinus::BBDown()
 };
 
 // stiffen Diff
-void PlusMinus::setDiffUp()
+void WheelGUI::setDiffUp()
 {
     if (diffEntry < 10)
     {
@@ -285,7 +295,7 @@ void PlusMinus::setDiffUp()
 };
 
 // Loosen Diff
-void PlusMinus::setDiffDn()
+void WheelGUI::setDiffDn()
 {
     if (diffEntry != 1)
     {
@@ -295,7 +305,7 @@ void PlusMinus::setDiffDn()
 };
 
 // preset menu scroll up
-void PlusMinus::scrollUp()
+void WheelGUI::scrollUp()
 {
     if (optionPreset < 10)
     {
@@ -305,7 +315,7 @@ void PlusMinus::scrollUp()
 };
 
 // preset menu scroll down
-void PlusMinus::scrollDown()
+void WheelGUI::scrollDown()
 {
     if (optionPreset > 1)
     {
@@ -315,92 +325,92 @@ void PlusMinus::scrollDown()
 };
 
 // preset menu - select
-void PlusMinus::selectMenu()
+void WheelGUI::selectMenu()
 {
     activePreset = optionPreset;
     Presetlbl->setText(QString::number(activePreset));
 };
 
 // Key press handling
-void PlusMinus::keyPressEvent(QKeyEvent *event)
+void WheelGUI::keyPressEvent(QKeyEvent *event)
 {
     // Ignition
     if (event->key() == Qt::Key_I)
     {
-        PlusMinus::startCar();
+        WheelGUI::startCar();
     }
     // gear shift up
     else if(event->key() == Qt::Key_P)
     {
-        PlusMinus::shiftUp();
+        WheelGUI::shiftUp();
     }
     // gear shift down
     else if (event->key() == Qt::Key_Q)
     {
-        PlusMinus::shiftDown();
+        WheelGUI::shiftDown();
     }
     // gear shift to  neutral
     else if (event->key() == Qt::Key_N)
     {
-        PlusMinus::shiftNeutral();
+        WheelGUI::shiftNeutral();
     }
     // toggle DRS
     else if (event->key() == Qt::Key_W)
     {
-        PlusMinus::toggleDRS();
+        WheelGUI::toggleDRS();
     }
     // toggle PLL
     else if (event->key() == Qt::Key_O)
     {
-        PlusMinus::togglePLL();
+        WheelGUI::togglePLL();
     }
     // Engine braking up
     else if (event->key() == Qt::Key_D)
     {
-        PlusMinus::EBUp();
+        WheelGUI::EBUp();
     }
     // Engine braking down
     else if (event->key() == Qt::Key_C)
     {
-        PlusMinus::EBDown();
+        WheelGUI::EBDown();
     }
     // brake balance - Forward
     else if (event->key() == Qt::Key_K)
     {
-        PlusMinus::BBUp();
+        WheelGUI::BBUp();
     }
     // brake balance - Backwards
     else if (event->key() == Qt::Key_M)
     {
-        PlusMinus::BBDown();
+        WheelGUI::BBDown();
     }
     // set Diff - stiffer
     else if (event->key() == Qt::Key_F)
     {
-        PlusMinus::setDiffUp();
+        WheelGUI::setDiffUp();
     }
     // set Diff - looser
     else if (event->key() == Qt::Key_V)
     {
-        PlusMinus::setDiffDn();
+        WheelGUI::setDiffDn();
     }
     // scroll up menu
     else if (event->key() == Qt::Key_Up)
     {
-        PlusMinus::scrollUp();
+        WheelGUI::scrollUp();
     }
     // scroll down menu
     else if (event->key() == Qt::Key_Down)
     {
-        PlusMinus::scrollDown();
+        WheelGUI::scrollDown();
     }
     // select menu item
     else if (event->key() == Qt::Key_B)
     {
-        PlusMinus::selectMenu();
+        WheelGUI::selectMenu();
     }
     else
     {
-        PlusMinus::startCar();
+        WheelGUI::startCar();
     };
 };
