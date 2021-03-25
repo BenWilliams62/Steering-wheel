@@ -48,6 +48,9 @@ Clone this repository to your device.
 If you are running this on a computer (Windows/macOS/Linux), compile and run with the commands:
    > <path>/qt5-build/qtbase/bin/qmake -project   
    > <path>/qt5-build/qtbase/bin/qmake
+  
+Add the following line to the bottom of the .pro file:
+   > QT += widgets
 
 After making any changes, compile with:
    > make
@@ -65,7 +68,10 @@ C - Engine Braking (Down)
 K - Brake Balance (Forwards)    
 M - Brake Balance (Backwards)    
 F - Diff (Stiffer)    
-V - Diff (Looser)    
+V - Diff (Looser)   
+Up Arrow - Preset Scroll Up    
+Down Arrow - Preset Scroll Down    
+B - Select Preset    
 All others - Ignition    
 
 The selection may seem non-sensical, however it aims to map roughly to the the locations of buttons on a real steering wheel
