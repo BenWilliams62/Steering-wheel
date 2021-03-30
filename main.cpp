@@ -10,7 +10,8 @@ int main(int argc, char *argv[]) {
   WheelGUI window;
 
   // window geometry
-  window.resize(1000, 580); // 800 480 final. Extra space for buttons
+  window.resize(800, 480); // final dimensions
+  //window.resize(1000,580 // Extra space for buttons
   window.setWindowTitle("Cockpit display");
   window.show();
 

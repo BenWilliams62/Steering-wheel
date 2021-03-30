@@ -42,17 +42,9 @@ class WheelGUI : public QWidget {
     void scrollUp();                    // scroll up in the menu
     void scrollDown();                  // scroll down in the menu
     void selectMenu();                  // select menu option
-    /*
-    void scrollPreset(int jump);        // flick through presets
-    void setPreset();                   // set preset
-    void setDiffEntry(std::string direction); // sett diff entry setting
-    void setDiffMid(std::string direction);   // sett diff Mid setting
-    void setDiffExit(std::string direction);  // sett diff Exit setting
-    */
 
   protected:
     void keyPressEvent(QKeyEvent *event);// handle controls through key
-
   private:
     QLabel *gearlbl;
     QLabel *DRSlbl;

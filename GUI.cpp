@@ -3,12 +3,15 @@
 #include <string>
 #include <QFont>
 #include <QKeyEvent>
+#include <QMenu>
 
 // GUI
 WheelGUI::WheelGUI(QWidget *parent)
     : QWidget(parent) {
 
   // create all the buttons and labels
+  /*
+  // uncomment this block if you want the on screen buttons
   auto *gearplsBtn = new QPushButton("Gear +", this);
   auto *gearminBtn = new QPushButton("Gear -", this);
   auto *gearntrBtn = new QPushButton("Gear N", this);
@@ -21,61 +24,64 @@ WheelGUI::WheelGUI(QWidget *parent)
   auto *ignitionBtn = new QPushButton("Ignition", this);
   auto *DiffUpBtn = new QPushButton("Diff +", this);
   auto *DiffDnBtn = new QPushButton("Diff -", this);
+  */
   // rotary switch
 
   gearlbl = new QLabel("", this);
-  DRSlbl = new QLabel("", this);
-  PLLlbl = new QLabel("", this);
-  EBlbl = new QLabel("", this);
-  BBlbl = new QLabel("", this);
+  DRSlbl = new QLabel("DRS", this);
+  PLLlbl = new QLabel("PLL", this);
+  EBlbl = new QLabel("Engine Braking", this);
+  BBlbl = new QLabel("Brake Balance", this);
   Errorlbl = new QLabel("Start engine", this);
-  Difflbl = new QLabel("", this);
-  Presetlbl = new QLabel("",this);
-  Selectlbl = new QLabel("",this);
+  Difflbl = new QLabel("Diff", this);
+  Presetlbl = new QLabel("Current",this);
+  Selectlbl = new QLabel("Hover",this);
 
   // stylise
   // ignition
-  ignitionBtn->setGeometry(0, 480, 100,100);
+  // ignitionBtn->setGeometry(0, 480, 100,100);
 
   // gears
-  gearplsBtn->setGeometry(900, 200, 100,100);
-  gearminBtn->setGeometry(000, 200, 100,100);
-  gearntrBtn->setGeometry(900, 480, 100,100);
-  gearlbl->setGeometry(450,0,200,400);
+  // gearplsBtn->setGeometry(900, 200, 100,100);
+  // gearminBtn->setGeometry(000, 200, 100,100);
+  // gearntrBtn->setGeometry(900, 480, 100,100);
+  gearlbl->setGeometry(350,0,200,400);
   QFont ft;
   ft.setPointSize(200);
   gearlbl->setFont(ft);
 
   // DRS
-  DRSlbl->setGeometry(100,0,100,100);
-  DRSBtn->setGeometry(0,0,100,100);
+  DRSlbl->setGeometry(00,0,100,100);
+  // DRSBtn->setGeometry(0,0,100,100);
 
   // Pit lane limiter
-  PLLlbl->setGeometry(800,0,100,100);
-  PLLBtn->setGeometry(900,0,100,100);
+  PLLlbl->setGeometry(700,0,100,100);
+  // PLLBtn->setGeometry(900,0,100,100);
 
   // engine breaking
-  EBplsBtn->setGeometry(000,300,100,50);
-  EBminBtn->setGeometry(000,350,100,50);
-  EBlbl->setGeometry(100,300,100,100);
+  //EBplsBtn->setGeometry(000,300,100,50);
+  //EBminBtn->setGeometry(000,350,100,50);
+  EBlbl->setGeometry(00,300,100,100);
 
   // engine breaking
-  BBplsBtn->setGeometry(900,300,100,50);
-  BBminBtn->setGeometry(900,350,100,50);
-  BBlbl->setGeometry(800,300,100,100);
+  // BBplsBtn->setGeometry(900,300,100,50);
+  // BBminBtn->setGeometry(900,350,100,50);
+  BBlbl->setGeometry(700,300,100,100);
 
   // Error label
   Errorlbl->setGeometry(450, 400,200,50);
 
   // Diff
-  DiffUpBtn->setGeometry(300,480,100,100);
-  DiffDnBtn->setGeometry(200,480,100,100);
-  Difflbl->setGeometry(250,380,50,100);
+  // DiffUpBtn->setGeometry(300,480,100,100);
+  // DiffDnBtn->setGeometry(200,480,100,100);
+  Difflbl->setGeometry(150,380,50,100);
 
   // Preset
-  Presetlbl->setGeometry(450,380,50,100);
-  Selectlbl->setGeometry(500,380,50,100);
+  Presetlbl->setGeometry(350,380,50,100);
+  Selectlbl->setGeometry(400,380,50,100);
 
+    /*
+    // uncomment for onscreen buttons
   connect(ignitionBtn, &QPushButton::clicked, this, &WheelGUI::startCar);
   connect(gearplsBtn, &QPushButton::clicked, this, &WheelGUI::shiftUp);
   connect(gearminBtn, &QPushButton::clicked, this, &WheelGUI::shiftDown);
@@ -88,6 +94,7 @@ WheelGUI::WheelGUI(QWidget *parent)
   connect(BBminBtn, &QPushButton::clicked, this, &WheelGUI::BBDown);
   connect(DiffUpBtn, &QPushButton::clicked, this, &WheelGUI::setDiffUp);
   connect(DiffDnBtn, &QPushButton::clicked, this, &WheelGUI::setDiffDn);
+  */
   // rotary switch
 };
 
@@ -414,3 +421,4 @@ void WheelGUI::keyPressEvent(QKeyEvent *event)
         WheelGUI::startCar();
     };
 };
+
