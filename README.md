@@ -1,14 +1,11 @@
 # Steering wheel
 
 ## Description
-This steering wheel project is being built.
+A very simple GUI app in C++ using Qt5. The goal is to create a steering wheel display similar to those used in F1, with keystrokes triggering functions such as gear changes, diff control or brake balance.
 
-The aim of this project is to develop a full functioned f1-style steering wheel, including the GUI, and button to trigger functions. This will not be connected to an f1 car (or any other car) for budget reasons, however if you are building a project and need this program, there will be spaces left to input the necessary code. 
+As I have no plans to implement this in a go kart or such, there has been no attempt to implement the necessary motor movements that would be required to actually change a diff setting or a gear, however there is space left if this changes.
 
-Main.cpp, Controls.cpp and GUI.cpp focus on the GUI and functions needed to make this project work.
-
-## Currently Building
-- Create a presets menu
+On screen buttons were used in development, so I have left them in the source code, but commented out such that they can be added again if needed for further development.
 
 ## Functions Built
 - initial functions added: gears, DRS, PLL, brake balance, engine braking
@@ -17,7 +14,6 @@ Main.cpp, Controls.cpp and GUI.cpp focus on the GUI and functions needed to make
 
 ## Technologies
 - C++
-- Raspberry Pi
 - Qt5
 
 ## How to use Qt5
